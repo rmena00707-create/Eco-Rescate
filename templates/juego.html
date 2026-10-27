@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoRescate | EcoGuardian</title>
+
+    <meta name="theme-color" content="#102b25">
+    <meta name="description"
+          content="Aventura ecológica pixel art de EcoGuardian">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/juego.css') }}">
+</head>
+<body>
+
+    <div class="game-background"></div>
+
+    <header class="game-header">
+        <a class="brand" href="{{ url_for('inicio') }}">
+            <span class="brand-icon">🌿</span>
+            <span>
+                ECO<span class="brand-highlight">RESCATE</span>
+                <small>UNA AVENTURA ECOLÓGICA</small>
+            </span>
+        </a>
+
+        <a href="{{ url_for('inicio') }}" class="back-button">
+            ← Volver a EcoGuardian
+        </a>
+    </header>
+
+    <main class="game-container">
+
+        <section class="intro">
+            <p class="eyebrow">MISIÓN: SALVAR EL PLANETA</p>
+            <h1>¡El planeta te necesita!</h1>
+            <p>
+                Recoge los residuos, esquiva a los enemigos
+                y restaura la naturaleza.
+            </p>
+        </section>
+
+        <section class="stats" aria-label="Estadísticas de la partida">
+            <article class="stat-card">
+                <span>🌟 PUNTOS</span>
+                <strong id="score">0</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>🏆 RÉCORD</span>
+                <strong id="record">0</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>🗺️ NIVEL</span>
+                <strong id="level">1 / 3</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>❤️ VIDAS</span>
+                <strong id="lives">3</strong>
+            </article>
+        </section>
+
+        <section class="mission-panel">
+            <div>
+                <span class="mission-label">MISIÓN ACTUAL</span>
+                <h2 id="missionTitle">Bosque verde</h2>
+                <p id="missionText">
+                    Recoge los residuos para limpiar el bosque.
+                </p>
+            </div>
+
+            <div class="mission-progress">
+                <div class="progress-info">
+                    <span>Progreso</span>
+                    <strong id="progressText">0 / 8</strong>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="game-card">
+
+            <div class="game-toolbar">
+                <span class="live-indicator"></span>
+                <span id="gameStatus" aria-live="polite">
+                    PREPARADO PARA JUGAR
+                </span>
+
+                <button id="soundButton" class="small-button"
+                        type="button" aria-pressed="false">
+                    🔇 Sonido
+                </button>
+            </div>
+
+            <div class="canvas-wrapper">
+                <canvas id="gameCanvas"
+                        width="640"
+                        height="400"
+                        tabindex="0"
+                        aria-label="Juego EcoRescate. Muévete con las flechas o WASD, recoge residuos y evita los enemigos.">
+                    Tu navegador no admite Canvas.
+                </canvas>
+
+                <div id="gameOverlay" class="game-overlay">
+                    <div class="overlay-box">
+                        <div id="overlayIcon" class="overlay-icon">🌎</div>
+                        <h2 id="overlayTitle">EcoRescate</h2>
+                        <p id="overlayText">
+                            Tu aventura para salvar la naturaleza comienza aquí.
+                        </p>
+
+                        <button id="startButton" class="primary-button"
+                                type="button">
+                            ▶ Comenzar aventura
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-footer">
+                <span>PIXEL ART · ECOGUARDIAN</span>
+                <span id="levelName">🌳 BOSQUE</span>
+            </div>
+
+        </section>
+
+        <section class="controls-panel">
+            <div>
+                <h2>🎮 Cómo jugar</h2>
+                <p>Muévete por el mapa y recoge todos los residuos de la misión.</p>
+            </div>
+
+            <div class="key-guide">
+                <div class="key-group">
+                    <span class="key">W</span>
+                    <div class="key-bottom">
+                        <span class="key">A</span>
+                        <span class="key">S</span>
+                        <span class="key">D</span>
+                    </div>
+                </div>
+
+                <span class="or-text">O</span>
+
+                <div class="arrows">
+                    <span class="key">↑</span>
+                    <div>
+                        <span class="key">←</span>
+                        <span class="key">↓</span>
+                        <span class="key">→</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tips">
+            <h2>🌎 Consejos para ser un guardián</h2>
+
+            <div class="tip-grid">
+                <article class="tip-card">
+                    <span>♻️</span>
+                    <h3>Recicla</h3>
+                    <p>Recoger residuos ayuda a mantener limpio el entorno.</p>
+                </article>
+
+                <article class="tip-card">
+                    <span>💧</span>
+                    <h3>Protege el agua</h3>
+                    <p>Evita contaminar los ríos y las playas.</p>
+                </article>
+
+                <article class="tip-card">
+                    <span>🌱</span>
+                    <h3>Cuida la vida</h3>
+                    <p>Protege los bosques y los animales de tu planeta.</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="game-page-footer">
+        <p>EcoGuardian © 2026 · Cada pequeña acción cuenta. 🌱</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/juego.js') }}"
+            defer></script>
+</body>
+</html>

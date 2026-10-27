@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071410">
+
+    <title>EcoGuardian | Protectores del planeta</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="ambient-bg"></div>
+    <div class="grid-bg"></div>
+    <div class="light-orb orb-one"></div>
+    <div class="light-orb orb-two"></div>
+
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+    <div id="floatingNature" aria-hidden="true"></div>
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">
+                <span class="brand-icon">
+                    <i class="bi bi-globe-americas"></i>
+                </span>
+                Eco<span class="brand-highlight">Guardian</span>
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#menu">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <div class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <a class="nav-link active" href="#inicio">Inicio</a>
+                    <a class="nav-link" href="#misiones">Misiones</a>
+                    <a class="nav-link" href="#impacto">Impacto</a>
+                    <a class="nav-link" href="#aprende">Aprender</a>
+                    <!-- Enlace al minijuego EcoRescate -->
+                    <a href="{{ url_for('jugar') }}" class="nav-jugar">
+                        <i class="bi bi-controller"></i>
+                        <span>Jugar</span>
+                    </a>
+
+
+
+                    <button class="theme-button" id="modoBtn"
+                            aria-label="Cambiar tema">
+                        <i class="bi bi-sun-fill"></i>
+                    </button>
+
+                    <a href="#misiones" class="nav-cta">
+                        Comenzar <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero section-space" id="inicio">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 hero-copy">
+                        <div class="status-pill reveal">
+                            <span class="pulse-dot"></span>
+                            UNA MISIÓN PARA NUESTRO PLANETA
+                        </div>
+
+                        <h1 class="hero-title reveal">
+                            El futuro de la Tierra
+                            <span>está en tus manos.</span>
+                        </h1>
+
+                        <p class="hero-description reveal">
+                            Aprende, explora y conviértete en un guardián
+                            del medio ambiente. Cada pequeño cambio puede
+                            construir un futuro extraordinario.
+                        </p>
+
+                        <div class="hero-actions reveal">
+                            <a href="#misiones" class="btn-primary-custom">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                                Explorar misiones
+                            </a>
+
+                            <a href="#aprende" class="btn-text">
+                                Descubrir el proyecto
+                                <i class="bi bi-arrow-down-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="hero-stats reveal">
+                            <div class="stat">
+                                <strong>09</strong>
+                                <span>Áreas ambientales</span>
+                            </div>
+
+                            <div class="stat-divider"></div>
+
+                            <div class="stat">
+                                <strong>∞</strong>
+                                <span>Formas de ayudar</span>
+                            </div>
+
+                            <div class="stat-divider"></div>
+
+                            <div class="stat">
+                                <strong>01</strong>
+                                <span>Planeta que cuidar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="earth-scene reveal">
+                            <div class="scene-label label-top">
+                                <span class="mini-dot"></span>
+                                SISTEMA PLANETARIO
+                            </div>
+
+                            <div class="orbit orbit-a"></div>
+                            <div class="orbit orbit-b"></div>
+                            <div class="orbit orbit-c"></div>
+
+                            <div class="planet-glow"></div>
+
+
+<!-- Imagen principal de EcoGuardian con Bootstrap -->
+<div class="container my-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-lg-10">
+            <div class="imagen-principal position-relative overflow-hidden rounded-5 shadow-lg">
+                <img
+                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=85"
+                    alt="Bosque natural lleno de vida"
+                    class="img-fluid w-100 imagen-naturaleza"
+                >
+
+                <div class="imagen-overlay d-flex flex-column justify-content-end p-4 p-md-5">
+                    <span class="badge text-bg-info align-self-start mb-3">
+                        🌿 Protejamos nuestro planeta
+                    </span>
+
+                    <h2 class="text-white fw-bold display-5">
+                        El futuro de la Tierra
+                        <br>
+                        está en nuestras manos
+                    </h2>
+
+                    <p class="text-white fs-5 mb-0">
+                        Cada pequeña acción puede generar un gran cambio.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                                <div class="earth-fallback">
+                                    <i class="bi bi-globe-americas"></i>
+                                </div>
+                            </div>
+
+                            <div class="floating-card floating-top">
+                                <span class="floating-icon">
+                                    <i class="bi bi-tree-fill"></i>
+                                </span>
+                                <div>
+                                    <strong>Más naturaleza</strong>
+                                    <small>Más vida para todos</small>
+                                </div>
+                            </div>
+
+                            <div class="floating-card floating-bottom">
+                                <span class="floating-icon water">
+                                    <i class="bi bi-droplet-fill"></i>
+                                </span>
+                                <div>
+                                    <strong>Cada gota cuenta</strong>
+                                    <small>Protege el agua</small>
+                                </div>
+                            </div>
+
+                            <span class="star star-a">✦</span>
+                            <span class="star star-b">✧</span>
+                            <span class="star star-c">✦</span>
+                            <span class="star star-d">✧</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#misiones" class="scroll-indicator">
+                <span>DESLIZA PARA EXPLORAR</span>
+                <i class="bi bi-arrow-down"></i>
+            </a>
+        </section>
+
+        <section class="section-space missions-section" id="misiones">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="eyebrow">TU AVENTURA COMIENZA AQUÍ</span>
+                    <h2>Elige tu próxima <span>misión.</span></h2>
+                    <p>
+                        Descubre los desafíos ambientales y demuestra
+                        cuánto sabes sobre nuestro planeta.
+                    </p>
+                </div>
+
+                <div class="row g-4" id="missionGrid">
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-recycle reveal"
+                                 data-category="reciclaje">
+                            <div class="card-topline">
+                                <span class="card-number">01 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-recycle"></i>
+                            </div>
+                            <h3>Reciclaje inteligente</h3>
+                            <p>
+                                Convierte los residuos en recursos
+                                y reduce tu huella ambiental.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="reciclaje">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-water reveal"
+                                 data-category="agua">
+                            <div class="card-topline">
+                                <span class="card-number">02 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-droplet-half"></i>
+                            </div>
+                            <h3>Guardianes del agua</h3>
+                            <p>
+                                Protege los ríos, los océanos y cada
+                                gota de agua que necesitamos.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="agua">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-energy reveal"
+                                 data-category="energia">
+                            <div class="card-topline">
+                                <span class="card-number">03 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-lightning-charge"></i>
+                            </div>
+                            <h3>Energía sostenible</h3>
+                            <p>
+                                Aprende a ahorrar electricidad y
+                                descubre alternativas renovables.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="energia">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-nature reveal"
+                                 data-category="naturaleza">
+                            <div class="card-topline">
+                                <span class="card-number">04 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-flower1"></i>
+                            </div>
+                            <h3>Biodiversidad</h3>
+                            <p>
+                                Conoce las especies y los ecosistemas
+                                que hacen único nuestro planeta.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="naturaleza">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-ocean reveal"
+                                 data-category="oceanos">
+                            <div class="card-topline">
+                                <span class="card-number">05 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-water"></i>
+                            </div>
+                            <h3>Océanos vivos</h3>
+                            <p>
+                                Descubre cómo evitar la contaminación
+                                y cuidar la vida marina.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="oceanos">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-climate reveal"
+                                 data-category="clima">
+                            <div class="card-topline">
+                                <span class="card-number">06 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-cloud-sun"></i>
+                            </div>
+                            <h3>Defensores del clima</h3>
+                            <p>
+                                Comprende el cambio climático y
+                                descubre cómo actuar.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="clima">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-transport reveal"
+                                 data-category="transporte">
+                            <div class="card-topline">
+                                <span class="card-number">07 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-bicycle"></i>
+                            </div>
+                            <h3>Movilidad verde</h3>
+                            <p>
+                                Explora formas de desplazarte con
+                                un menor impacto ambiental.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="transporte">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-pollution reveal"
+                                 data-category="contaminacion">
+                            <div class="card-topline">
+                                <span class="card-number">08 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-wind"></i>
+                            </div>
+                            <h3>Contra la contaminación</h3>
+                            <p>
+                                Identifica las amenazas ambientales
+                                y aprende a reducirlas.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="contaminacion">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="mission-card card-earth reveal"
+                                 data-category="ambiente">
+                            <div class="card-topline">
+                                <span class="card-number">09 / MISIÓN</span>
+                                <i class="bi bi-arrow-up-right card-arrow"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="bi bi-globe-americas"></i>
+                            </div>
+                            <h3>Misión planeta</h3>
+                            <p>
+                                Pon a prueba tus conocimientos sobre
+                                el cuidado del medio ambiente.
+                            </p>
+                            <div class="card-bottomline">
+                                <span><i class="bi bi-lightning-charge"></i> Nivel inicial</span>
+                                <button class="start-quiz" data-quiz="ambiente">
+                                    Jugar <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="quiz-panel" id="quizPanel" hidden>
+                    <div class="quiz-header">
+                        <div>
+                            <span class="eyebrow">DESAFÍO ECOLÓGICO</span>
+                            <h3 id="quizTitle">Tu misión</h3>
+                        </div>
+                        <button class="quiz-close" id="closeQuiz"
+                                aria-label="Cerrar cuestionario">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+
+                    <div class="quiz-progress">
+                        <div id="quizProgressBar"></div>
+                    </div>
+
+                    <div class="quiz-meta">
+                        <span id="questionCount">Pregunta 1</span>
+                        <span><i class="bi bi-star-fill"></i>
+                            <b id="quizScore">0</b> puntos
+                        </span>
+                    </div>
+
+                    <h4 id="questionText">Pregunta</h4>
+                    <div id="answerOptions" class="answer-options"></div>
+                    <p id="quizFeedback" role="status"></p>
+
+                    <div class="quiz-footer">
+                        <span id="quizStreak">¡Vamos a comenzar!</span>
+                        <button id="nextQuestion" class="btn-primary-custom" disabled>
+                            Siguiente <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div id="quizResult" hidden></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="impact-section section-space" id="impacto">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="eyebrow">PEQUEÑAS ACCIONES, GRANDES CAMBIOS</span>
+                    <h2>El cambio empieza <span>contigo.</span></h2>
+                    <p>
+                        Aprender sobre el planeta es el primer paso
+                        para protegerlo.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <article class="impact-card reveal">
+                            <i class="bi bi-tree"></i>
+                            <strong>Cuida</strong>
+                            <p>Protege los árboles y los espacios naturales.</p>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="impact-card reveal">
+                            <i class="bi bi-arrow-repeat"></i>
+                            <strong>Reutiliza</strong>
+                            <p>Dale una nueva oportunidad a los objetos.</p>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="impact-card reveal">
+                            <i class="bi bi-lightbulb"></i>
+                            <strong>Inspira</strong>
+                            <p>Comparte buenos hábitos con otras personas.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="learn-section section-space" id="aprende">
+            <div class="container">
+                <div class="learn-panel reveal">
+                    <div class="learn-decoration">
+                        <i class="bi bi-flower3"></i>
+                    </div>
+
+                    <span class="eyebrow">APRENDE ALGO NUEVO CADA DÍA</span>
+                    <h2>La naturaleza no necesita espectadores.<br>
+                        <span>Necesita guardianes.</span>
+                    </h2>
+
+                    <p>
+                        Empieza por una acción sencilla: separa tus residuos,
+                        ahorra agua, apaga las luces que no utilizas
+                        y respeta la vida que te rodea.
+                    </p>
+
+                    <a href="#misiones" class="btn-primary-custom">
+                        Aceptar el desafío
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <a class="navbar-brand" href="#inicio">
+                    <span class="brand-icon">
+                        <i class="bi bi-globe-americas"></i>
+                    </span>
+                    Eco<span class="brand-highlight">Guardian</span>
+                </a>
+
+                <p>Un planeta. Muchas acciones. Un futuro compartido.</p>
+
+                <a href="#inicio" class="back-top" id="arribaBtn"
+                   aria-label="Volver arriba">
+                    <i class="bi bi-arrow-up"></i>
+                </a>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 EcoGuardian · Proyecto educativo ambiental</span>
+                <span>Hecho para cuidar nuestro hogar <i class="bi bi-heart-fill"></i></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

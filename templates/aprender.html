@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>{{ tema.titulo }} | EcoGuardian</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         FONDO
+    =========================================== -->
+
+    <div class="fondo"></div>
+
+    <div class="brillos"></div>
+
+
+    <div class="particulas">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         NAVBAR
+    =========================================== -->
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+
+        <div class="container">
+
+
+            <a
+                class="navbar-brand"
+                href="{{ url_for('inicio') }}"
+            >
+
+                🌎 Eco<span>Guardian</span>
+
+            </a>
+
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu"
+            >
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <div
+                class="collapse navbar-collapse"
+                id="menu"
+            >
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="{{ url_for('inicio') }}"
+                        >
+                            Inicio
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="{{ url_for('inicio') }}#categorias"
+                        >
+                            Quizzes
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link active"
+                            href="{{ url_for('inicio') }}#aprende"
+                        >
+                            Aprender
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item ms-lg-3">
+
+                        <button
+                            class="modo-btn"
+                            id="modoBtn"
+                            type="button"
+                            title="Cambiar modo"
+                        >
+
+                            <i class="bi bi-moon-fill"></i>
+
+                        </button>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ==========================================
+         CONTENIDO
+    =========================================== -->
+
+    <main class="aprender-page">
+
+        <div class="container">
+
+
+            <!-- CABECERA -->
+
+            <div class="aprender-header text-center">
+
+
+                <div class="aprender-icon">
+
+                    {{ tema.icono }}
+
+                </div>
+
+
+                <span class="badge-aprender">
+
+                    📚 APRENDE
+
+                </span>
+
+
+                <h1>
+
+                    {{ tema.titulo }}
+
+                </h1>
+
+
+                <p>
+
+                    {{ tema.descripcion }}
+
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 INTRODUCCIÓN
+            =================================== -->
+
+            <div class="learning-card">
+
+
+                <div class="learning-heading">
+
+                    <i class="bi bi-info-circle-fill"></i>
+
+                    <h2>
+                        ¿Qué debes saber?
+                    </h2>
+
+                </div>
+
+
+                <p class="learning-description">
+
+                    {{ tema.introduccion }}
+
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 PASOS
+            =================================== -->
+
+            <div class="learning-card">
+
+
+                <div class="learning-heading">
+
+                    <i class="bi bi-lightbulb-fill"></i>
+
+                    <h2>
+                        ¿Qué puedes hacer?
+                    </h2>
+
+                </div>
+
+
+                <div class="steps">
+
+
+                    {% for paso in tema.pasos %}
+
+
+                    <div class="step">
+
+
+                        <div class="step-number">
+
+                            {{ loop.index }}
+
+                        </div>
+
+
+                        <div class="step-content">
+
+
+                            <!-- IMPORTANTE:
+                                 usamos paso.titulo -->
+
+                            <h4>
+
+                                {{ paso.titulo }}
+
+                            </h4>
+
+
+                            <!-- IMPORTANTE:
+                                 usamos paso.texto -->
+
+                            <p>
+
+                                {{ paso.texto }}
+
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 CONSEJO
+            =================================== -->
+
+            <div class="tip-card">
+
+
+                <div class="tip-icon">
+
+                    💚
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        EcoConsejo
+                    </h3>
+
+
+                    <p>
+
+                        {{ tema.consejo }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 BOTONES
+            =================================== -->
+
+            <div class="learning-action">
+
+
+                <a
+                    href="{{ url_for('inicio') }}"
+                    class="btn-secundario"
+                >
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Volver al inicio
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+
+    <footer>
+
+        <div class="container text-center">
+
+
+            <div class="footer-logo">
+
+                🌎 Eco<span style="color: #43e879;">
+                    Guardian
+                </span>
+
+            </div>
+
+
+            <p>
+
+                Aprende, juega y ayuda a proteger
+                nuestro planeta.
+
+            </p>
+
+
+            <hr>
+
+
+            <small>
+
+                © 2026 EcoGuardian -
+                Educación ambiental
+
+            </small>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Bootstrap JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+
+    <!-- Modo oscuro/claro -->
+
+    <script>
+
+        const modoBtn = document.getElementById("modoBtn");
+
+        if (modoBtn) {
+
+            modoBtn.addEventListener("click", function () {
+
+                document.body.classList.toggle("claro");
+
+                const icono = modoBtn.querySelector("i");
+
+                if (
+                    document.body.classList.contains("claro")
+                ) {
+
+                    icono.className =
+                        "bi bi-sun-fill";
+
+                } else {
+
+                    icono.className =
+                        "bi bi-moon-fill";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
